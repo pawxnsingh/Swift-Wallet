@@ -1,5 +1,4 @@
 import { P2pTransferCard } from "../../../components/P2PTransfer";
-import { OnRampTransactions } from "../../../components/OnRampTransactions";
 import prisma from "@repo/db/client";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../lib/auth";
@@ -31,26 +30,19 @@ async function getP2PTransaction() {
         from: t.fromUserId,
         to: t.toUserId,
     }));
+}
 
-export default function P2pTransfer() {
+export default async function P2pTransfer() {
     const transactions = await getP2PTransaction();
-
-
 
     return (
         <div className="w-screen">
             <div className="text-4xl text-[#6a51a6] pt-8 mb-8 font-bold">
                 P2P Transfer
             </div>
-
             <div className="grid grid-cols-2">
                 <div>
                     <P2pTransferCard />
-                </div>
-
-                <div>
-
-                    
                 </div>
             </div>
         </div>
