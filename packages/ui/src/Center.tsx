@@ -1,9 +1,9 @@
-import React from "react"
+import { ReactNode } from "react";
 
-export const Center = ({ children }: { children: React.ReactNode }) => {
-    return <div className="flex justify-center flex-col h-full">
-        <div className="flex justify-center">
-            {children}
+export const Center = ({ children }: { children: ReactNode }) => {
+    return (
+        <div className="flex justify-center flex-col h-full">
+            <div className="flex justify-center">{children}</div>
         </div>
-    </div>
-}
+    );
+};

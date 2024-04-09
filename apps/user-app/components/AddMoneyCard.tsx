@@ -5,7 +5,7 @@ import { Center } from "@repo/ui/center";
 import { Select } from "@repo/ui/select";
 import { useState } from "react";
 import { TextInput } from "@repo/ui/textinput";
-import { createOnRampTxn } from "../app/lib/onRampTxn";
+import { createOnRampTxn } from "../app/lib/actions/onRampTxn";
 
 const SUPPORTED_BANKS = [
     {

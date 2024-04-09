@@ -2,7 +2,7 @@
 // this is the server action that will be invoke by client
 import prisma from "@repo/db/client";
 import { getServerSession } from "next-auth";
-import { authOptions } from "./auth";
+import { authOptions } from "../auth";
 
 // this is the server action
 export async function createOnRampTxn(amount: number, providers: string) {

@@ -9,7 +9,7 @@ import { NextResponse } from "next/server";
 
 async function getBalance() {
     const session = await getServerSession(authOptions);
-  
+
     const balance = await prisma.balance.findFirst({
         where: {
             userId: Number(session?.user?.id),
@@ -41,7 +41,7 @@ async function getOnRampTransactions() {
 export default async function () {
     const balance = await getBalance();
     const transactions = await getOnRampTransactions();
-    
+
     return (
         <div className="w-screen">
             <div className="text-4xl text-[#6a51a6] pt-8 mb-8 font-bold">
@@ -57,7 +57,6 @@ export default async function () {
                         locked={balance.locked}
                     />
                     <div className="pt-4">
-                        
                         <OnRampTransactions transactions={transactions} />
                     </div>
                 </div>
