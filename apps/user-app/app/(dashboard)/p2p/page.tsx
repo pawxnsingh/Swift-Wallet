@@ -21,7 +21,7 @@ async function getP2PTransaction() {
                 { toUserId: session.user.id },
             ],
         },
-    });
+    });  //dasdadadas
 
     // so basically it will return all the
     return txns.map((t) => ({
