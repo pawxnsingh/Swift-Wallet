@@ -36,7 +36,7 @@ model OnRampTransaction {
   userId    Int
   user      User         @relation(fields: [userId], references: [id])
 }
-
+// hjhk
 model P2pTransfer {
   id         Int      @id @default(autoincrement())
   amount     Int
