@@ -1,5 +1,5 @@
 import express from "express";
-import db from "@repo/db/client";
+import prisma from "@repo/db/client";
 const app = express();
 
 app.use(express.json());
@@ -18,7 +18,7 @@ app.post("/hdfcWebhook", async (req, res) => {
     };
 
     // this is the edge case if, a web hook server hit the backend twice
-    const isProcessing = await db.onRampTransaction.findFirst({
+    const isProcessing = await prisma.onRampTransaction.findFirst({
         where: {
             token: paymentInformation.token,
         },
@@ -31,8 +31,8 @@ app.post("/hdfcWebhook", async (req, res) => {
     }
 
     try {
-        await db.$transaction([
-            db.balance.updateMany({
+        await prisma.$transaction([
+            prisma.balance.updateMany({
                 where: {
                     userId: Number(paymentInformation.userId),
                 },
@@ -43,7 +43,7 @@ app.post("/hdfcWebhook", async (req, res) => {
                     },
                 },
             }),
-            db.onRampTransaction.updateMany({
+            prisma.onRampTransaction.updateMany({
                 where: {
                     token: paymentInformation.token,
                 },
