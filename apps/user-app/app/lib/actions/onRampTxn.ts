@@ -21,7 +21,8 @@ export async function createOnRampTxn(amount: number, providers: string) {
     // and we can use that token to create the onRampTxn and redirect the user to the hdfc banking portal with that token
     // so that hdfcbank can verify that it is that user
     // now i have checked that if the user is authenticated or not
-    // const token = axios.post("")
+    // const token = axios.post("") 
+    // here make a server call to test out thing
 
     const token = (Math.random() * 10000000).toString();
 
