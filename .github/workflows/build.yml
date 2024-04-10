@@ -1,0 +1,40 @@
+# name of the workflow, it will be display on the Github Action Pages
+name: Build on PR
+# on which branch you want to run the workflow logic
+on:
+  # if any pull_request come on the master branch run this workflow logic
+  #
+  pull_request:
+    branches:
+      - main
+      # - '**' <- any time a PR come on any branch, run the following jobs
+
+# what jobs you want to run on the pr or the commit
+jobs:
+  # i want to run the build script
+  Build:
+    name: Build the Project on Ubuntu Machine
+    # which env i want from github to run my code
+    runs-on: ubuntu-latest
+    # what step i want github workflow
+    steps:
+      - name: checkout the repository
+        uses: actions/checkout/@v3 # <- basically clone the repo on the github worker, here we are using external package
+        # but we can also do git clone with branch having the code changes
+
+      # here i am building the project so i also need to install the nodeJS
+      - name: Install nodeJS
+        uses: actions/setup-node/@v2
+        with:
+          node-version: "20"
+
+      # installing all the dependencies
+      - name: Installing Dependencies
+        uses: npm install
+
+      - name: Installing the Prisma Client
+        uses: npm run db:generate
+
+      # if this succeed then , it will show the tick on the pr workflow
+      - name: Build the project
+        uses: npm run build
