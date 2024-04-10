@@ -30,11 +30,11 @@ jobs:
 
       # installing all the dependencies
       - name: Installing Dependencies
-        uses: npm install
+        run: npm install
 
       - name: Installing the Prisma Client
-        uses: npm run db:generate
+        run: npm run db:generate
 
       # if this succeed then , it will show the tick on the pr workflow
       - name: Build the project
-        uses: npm run build
+        run: npm run build
