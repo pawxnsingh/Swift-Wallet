@@ -6,7 +6,7 @@ datasource db {
   provider = "postgresql"
   url      = env("postgresql://postgres:pawan@localhost:5433/postgres")
 }
-
+// the below is the user model
 model User {
   id                Int                 @id @default(autoincrement())
   email             String?             @unique
