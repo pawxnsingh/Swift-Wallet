@@ -12,7 +12,7 @@ on:
 # what jobs you want to run on the pr or the commit
 jobs:
   # i want to run the build script
-  Build:
+  build:
     name: Build the Project on Ubuntu Machine
     # which env i want from github to run my code
     runs-on: ubuntu-latest
@@ -24,7 +24,7 @@ jobs:
 
       # here i am building the project so i also need to install the nodeJS
       - name: Install nodeJS
-        uses: actions/setup-node/@v2
+        uses: actions/setup-node/@v3
         with:
           node-version: "20"
 
