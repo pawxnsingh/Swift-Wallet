@@ -23,7 +23,7 @@ jobs:
           context: .
           path: ./docker/Dockerfile.userapp
           push: true
-          tag: pawxn/swift-user-app:latest
-          
+          tags: pawxn/swift-user-app:latest
+
       - name: verify the pushed images
         run: docker pull pawxn/swift-user-app:latest
