@@ -1,0 +1,29 @@
+name: build and push to the dockerHub
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      # clone the repo into the github's workflow
+      - name: clone the Repo to the workflow
+        uses: actions/checkout@v4
+      # login to the dockerhub
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      # build the docker image and later push it to the dockerhub registry
+      - name: build and push to Dockerhub
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          path: ./docker/Dockerfile.userapp
+          push: true
+          tag: pawxn/swift-user-app:latest
+          
+      - name: verify the pushed images
+        run: docker pull pawxn/swift-user-app:latest
