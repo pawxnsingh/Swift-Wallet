@@ -21,7 +21,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          path: ./docker/Dockerfile.userapp
+          path: D:\Projects\coinPouch-2\docker\Dockerfile.userapp
           push: true
           tags: pawxn/swift-user-app:latest
 
