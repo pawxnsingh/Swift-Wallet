@@ -28,7 +28,7 @@ jobs:
         with:
           node-version: "20"
 
-      # installing all the dependencies
+      # installing all the dependencies that was presesnt in package.json
       - name: Installing Dependencies
         run: npm install
 
