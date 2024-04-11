@@ -9,19 +9,19 @@ jobs:
     steps:
       # clone the repo into the github's workflow
       - name: clone the Repo to the workflow
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
       # login to the dockerhub
       - name: Log in to Docker Hub
-        uses: docker/login-action@v3
+        uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       # build the docker image and later push it to the dockerhub registry
       - name: build and push to Dockerhub
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v2
         with:
           context: .
-          path: D:\Projects\coinPouch-2\docker\Dockerfile.userapp
+          path: ./docker/Dockerfile.userapp
           push: true
           tags: pawxn/swift-user-app:latest
 
