@@ -15,12 +15,12 @@ RUN npm install
 
 # generate the prisma client
 # or we can add global script in the package.json
-RUN cd packages/db && npx prisma generate && cd ../..
+RUN npm run db:generate
 
 # building all the three application
 # but we need to build only userapp
 # Can you filter the build down to just one app?
-RUN npm run build
+RUN cd ../apps/user-app && npm run build
 
 # and the above one will run when we have to build the images
 # this command will run when we have to start the container
