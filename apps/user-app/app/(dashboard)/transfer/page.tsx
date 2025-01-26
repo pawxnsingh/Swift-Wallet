@@ -3,39 +3,39 @@ import { AddMoney } from "../../../components/AddMoneyCard";
 import { BalanceCard } from "../../../components/BalanceCard";
 import { OnRampTransactions } from "../../../components/OnRampTransactions";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../../lib/auth";
+// import { authOptions } from "../../lib/auth";
 
 import { NextResponse } from "next/server";
 
 async function getBalance() {
-    const session = await getServerSession(authOptions);
+    // const session = await getServerSession(authOptions);
 
-    const balance = await prisma.balance.findFirst({
-        where: {
-            userId: Number(session?.user?.id),
-        },
-    });
+    // const balance = await prisma.balance.findFirst({
+    //     where: {
+    //         userId: Number(session?.user?.id),
+    //     },
+    // });
 
-    return {
-        amount: balance?.amount || 0,
-        locked: balance?.locked || 0,
-    };
+    // return {
+    //     amount: balance?.amount || 0,
+    //     locked: balance?.locked || 0,
+    // };
 }
 
 async function getOnRampTransactions() {
-    const session = await getServerSession(authOptions);
+    // const session = await getServerSession(authOptions);
 
-    const txns = await prisma.onRampTransaction.findMany({
-        where: {
-            userId: Number(session?.user?.id),
-        },
-    });
-    return txns.map((t) => ({
-        time: t.startTime,
-        amount: t.amount,
-        status: t.status,
-        provider: t.provider,
-    }));
+    // const txns = await prisma.onRampTransaction.findMany({
+    //     where: {
+    //         userId: Number(session?.user?.id),
+    //     },
+    // });
+    // return txns.map((t) => ({
+    //     time: t.startTime,
+    //     amount: t.amount,
+    //     status: t.status,
+    //     provider: t.provider,
+    // }));
 }
 
 export default async function () {
@@ -52,13 +52,13 @@ export default async function () {
                     <AddMoney />
                 </div>
                 <div>
-                    <BalanceCard
+                    {/* <BalanceCard
                         amount={balance.amount}
                         locked={balance.locked}
                     />
                     <div className="pt-4">
                         <OnRampTransactions transactions={transactions} />
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>
